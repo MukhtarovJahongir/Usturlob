@@ -3,7 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
 import "./StudentView.css";
 import TopicsDemo from "../TopicsDemo/TopicsDemo";
-import StudentDashboardPanel from '../StudentDashboardPanel/StudentDashboardPanel';
+import StudentDashboardPanel from "../StudentDashboardPanel/StudentDashboardPanel";
+import HarakatMasalalari from "../../page/HarakatMasalalari/HarakatMasalalari";
 
 const StudentView = () => {
   const location = useLocation();
@@ -46,7 +47,18 @@ const StudentView = () => {
       )}
 
       <header className="student-header">
-        <div className="student-info">
+        {/* Account bosilganda /user ga SPA navigatsiya */}
+        <div
+          className="student-info"
+          style={{ cursor: "pointer", transition: "transform 0.2s" }}
+          onClick={() =>
+            navigate("/user", { state: { name, surname, avatar } })
+          }
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.transform = "scale(1.05)")
+          }
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+        >
           <div className="avatar-wrapper">
             <img src={avatar} alt="avatar" className="student-avatar" />
           </div>
@@ -56,8 +68,9 @@ const StudentView = () => {
         </div>
         <div className="coins-box">💰 1200</div>
       </header>
+
       <div className="student-content">
-      <StudentDashboardPanel />
+        <StudentDashboardPanel />
         <TopicsDemo />
       </div>
     </div>

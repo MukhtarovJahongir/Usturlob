@@ -1,5 +1,7 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./TopicsDemo.css";
+import { FaStar } from "react-icons/fa";
 
 const topics = [
   "Natural sonlar qatori va raqamlar",
@@ -70,19 +72,47 @@ const topics = [
 ];
 
 const TopicsDemo = () => {
+  const navigate = useNavigate();
+
+  const handleCardClick = (topic) => {
+    if (topic === "Harakatga doir masalalar") {
+      navigate("/HarakatgaDoirMasalar");
+    }
+  };
+
   return (
     <div className="topics-container">
       <h1 className="topics-title">📚 Matematika Mavzulari</h1>
       <div className="topics-grid">
-        {topics.map((topic, index) => (
-          <div key={index} className="topic-card">
-            <span className="topic-number">{index + 1}</span>
-            <p className="topic-text">{topic}</p>
-          </div>
-        ))}
+        {topics.map((topic, index) => {
+          const starsEarned = Math.floor(Math.random() * 6); // 0-5 yulduz
+          return (
+            <div
+              key={index}
+              className="topic-card"
+              onClick={() => handleCardClick(topic)}
+            >
+              <span className="topic-number">{index + 1}</span>
+              <p className="topic-text">{topic}</p>
+
+              {/* Harakatga doir masalalargacha bo'lganlarda yulduzlar */}
+              {index < topics.indexOf("Harakatga doir masalalar") && (
+                <div className="stars">
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar
+                      key={i}
+                      color={i < starsEarned ? "#FFD700" : "#C0C0C0"}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 };
 
 export default TopicsDemo;
+ 

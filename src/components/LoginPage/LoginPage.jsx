@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // 🔥 navigate uchun
+import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 
 const avatars = [
@@ -15,7 +15,7 @@ const LoginPage = () => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [avatar, setAvatar] = useState(null);
-  const navigate = useNavigate(); // 🔥
+  const navigate = useNavigate();
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -33,10 +33,10 @@ const LoginPage = () => {
       return;
     }
 
-    // 🔥 O'quvchi sahifasiga yo'naltirish
-    navigate("/student", {
-      state: { name, surname, avatar },
-    });
+    const userData = { name, surname, avatar };
+    localStorage.setItem("userData", JSON.stringify(userData));
+
+    navigate("/student", { state: userData });
   };
 
   return (
@@ -47,7 +47,6 @@ const LoginPage = () => {
           Matematika o‘yinlari bilan o‘rganamiz! 🚀
         </p>
 
-        {/* 1-bosqich: Ism va Familiya */}
         {step === 1 && (
           <form onSubmit={handleNext} className="login-form">
             <input
@@ -68,7 +67,6 @@ const LoginPage = () => {
           </form>
         )}
 
-        {/* 2-bosqich: Avatar tanlash */}
         {step === 2 && (
           <form onSubmit={handleStart} className="login-form">
             <h3>Avatar tanlang 🎨</h3>

@@ -1,6 +1,6 @@
 import React from "react";
 import { FaMedal } from "react-icons/fa";
-const medal = <FaMedal />
+const medal = <FaMedal />;
 import {
   Box,
   Typography,
@@ -71,12 +71,12 @@ const StudentDashboardPanel = () => {
   return (
     <Box className="dashboard-wrap" sx={{ width: "100%", p: 2 }}>
       {/* Flex Layout */}
-      <Box sx={{ display: "flex", gap:"40px", flexWrap: "wrap" }}>
+      <Box sx={{ display: "flex", gap: "40px", flexWrap: "wrap" }}>
         {/* LEFT SIDE */}
         <Box sx={{ flex: 1, minWidth: 300 }}>
           <StyledCard
             bg="linear-gradient(135deg, #42a5f5, #1e88e5)"
-            icon = "https://static.thenounproject.com/png/1587734-200.png"
+            icon="https://static.thenounproject.com/png/1587734-200.png"
           >
             <CardContent>
               <Typography variant="h6" className="title">
@@ -122,7 +122,15 @@ const StudentDashboardPanel = () => {
         </Box>
 
         {/* RIGHT SIDE */}
-        <Box sx={{ flex: 2, minWidth: 400, display: "flex", flexDirection: "column", gap: "40px" }}>
+        <Box
+          sx={{
+            flex: 2,
+            minWidth: 400,
+            display: "flex",
+            flexDirection: "column",
+            gap: "40px",
+          }}
+        >
           {/* Level */}
           <Box>
             <Typography variant="h6" className="level-title">
@@ -136,7 +144,7 @@ const StudentDashboardPanel = () => {
           </Box>
 
           {/* Cards */}
-          <Box sx={{ display: "flex", gap:"40px", flexWrap: "wrap" }}>
+          <Box sx={{ display: "flex", gap: "40px", flexWrap: "wrap" }}>
             <StyledCard
               bg="linear-gradient(135deg, #ff7043, #f4511e)"
               icon="https://cdn-icons-png.flaticon.com/512/616/616490.png"
