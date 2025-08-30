@@ -83,7 +83,10 @@ const StudentDashboardPanel = () => {
                 🏆 Top O‘quvchilar
               </Typography>
               <List>
-                <ListItem>
+                <ListItem
+                  button
+                  onClick={() => navigate("/TopCoin")}
+                >
                   <ListItemAvatar>
                     <Avatar sx={{ bgcolor: "#FFD700" }}>
                       <FaCoins />
@@ -94,7 +97,11 @@ const StudentDashboardPanel = () => {
                     secondary={`Eng ko‘p koin: ${topStudents.coins.points}`}
                   />
                 </ListItem>
-                <ListItem>
+
+                <ListItem
+                  button
+                  onClick={() => navigate("/TopActive")}
+                >
                   <ListItemAvatar>
                     <Avatar sx={{ bgcolor: "#81C784" }}>
                       <FaRunning />
@@ -105,7 +112,11 @@ const StudentDashboardPanel = () => {
                     secondary={`Eng faol: ${topStudents.active.points}`}
                   />
                 </ListItem>
-                <ListItem>
+
+                <ListItem
+                  button
+                  onClick={() => navigate("/TopFighter")}
+                >
                   <ListItemAvatar>
                     <Avatar sx={{ bgcolor: "#EF5350" }}>
                       <GiCrossedSwords />
